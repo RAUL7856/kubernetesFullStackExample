@@ -158,7 +158,7 @@ pipeline {
                             sh 'kubectl label namespace default istio-injection=enabled --overwrite'
                             sh 'helm upgrade demoapp ./demo-application/ --install --atomic --set client.image=${DockerUser}/react:v${BUILD_NUMBER},api.image=${DockerUser}/spring:v${BUILD_NUMBER}'
                             sh 'helm upgrade demoprometheus ./demo-prometheus/ --install --atomic'
-                            sh 'helm upgrade demografana ./demo-grafana/ --install --atomic'
+                            sh 'helm upgrade demografana ./demo-grafana/ --set rbac.pspEnabled=false --set rbac.pspUseAppArmor=false --install --atomic'
                             // sh 'kubectl create namespace istio-system'
                             sh 'helm upgrade istio-base ./demo-istio/base/ -n istio-system --install --atomic'
                             sh 'helm upgrade istiod ./demo-istio/istio-control/istio-discovery/ -n istio-system --install --atomic'
