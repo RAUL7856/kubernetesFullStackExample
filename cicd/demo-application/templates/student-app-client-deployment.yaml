@@ -19,4 +19,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.client.containerPort }}
+          securityContext:
+            runAsUser: 1000
 {{- end }}

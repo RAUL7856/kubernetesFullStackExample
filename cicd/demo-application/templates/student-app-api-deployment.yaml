@@ -22,4 +22,6 @@ spec:
           env:
             - name: MONGO_URL
               value: mongodb://mongo:27017/dev
+          securityContext:
+            runAsUser: 1000
 {{- end }}

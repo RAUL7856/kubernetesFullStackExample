@@ -20,6 +20,8 @@ spec:
           volumeMounts:
             - name: storage
               mountPath: /data/db
+          securityContext:
+            runAsUser: 1000
       volumes:
         - name: storage
           persistentVolumeClaim:
